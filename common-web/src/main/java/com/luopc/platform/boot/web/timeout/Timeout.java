@@ -1,4 +1,4 @@
-package com.luopc.platform.cloud.web.timeout;
+package com.luopc.platform.boot.web.timeout;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

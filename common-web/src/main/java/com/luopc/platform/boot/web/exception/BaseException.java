@@ -1,4 +1,4 @@
-package com.luopc.platform.cloud.web.exception;
+package com.luopc.platform.boot.web.exception;
 
 import com.google.common.collect.Lists;
 import com.luopc.platform.common.core.exception.ErrorCode;

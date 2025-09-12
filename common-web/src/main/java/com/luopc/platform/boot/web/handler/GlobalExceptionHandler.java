@@ -1,9 +1,9 @@
-package com.luopc.platform.cloud.web.handler;
+package com.luopc.platform.boot.web.handler;
 
-import com.luopc.platform.cloud.web.exception.BaseException;
-import com.luopc.platform.cloud.web.exception.ExceptionCatch;
-import com.luopc.platform.cloud.web.exception.log.AppErrorCodeLogger;
-import com.luopc.platform.cloud.web.exception.log.AppErrorCodeLoggerFactory;
+import com.luopc.platform.boot.web.exception.BaseException;
+import com.luopc.platform.boot.web.exception.ExceptionCatch;
+import com.luopc.platform.boot.web.exception.log.AppErrorCodeLogger;
+import com.luopc.platform.boot.web.exception.log.AppErrorCodeLoggerFactory;
 import com.luopc.platform.common.core.exception.BusinessException;
 import com.luopc.platform.common.core.exception.PlatformErrorCode;
 import lombok.extern.slf4j.Slf4j;

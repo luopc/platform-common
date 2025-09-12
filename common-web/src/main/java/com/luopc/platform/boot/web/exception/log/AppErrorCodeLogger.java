@@ -1,4 +1,4 @@
-package com.luopc.platform.cloud.web.exception.log;
+package com.luopc.platform.boot.web.exception.log;
 
 import org.slf4j.Logger;
 import org.slf4j.Marker;

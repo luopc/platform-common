@@ -1,6 +1,5 @@
-package com.luopc.platform.cloud.web.exception.log;
+package com.luopc.platform.boot.web.exception.log;
 
-import com.luopc.platform.cloud.web.util.HttpClientPortUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.slf4j.helpers.FormattingTuple;

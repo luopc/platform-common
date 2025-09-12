@@ -1,4 +1,4 @@
-package com.luopc.platform.cloud.web.exception;
+package com.luopc.platform.boot.web.exception;
 
 public class TimeoutFallbackException extends BaseException {
 

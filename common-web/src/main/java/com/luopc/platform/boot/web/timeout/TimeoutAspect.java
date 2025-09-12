@@ -1,6 +1,6 @@
-package com.luopc.platform.cloud.web.timeout;
+package com.luopc.platform.boot.web.timeout;
 
-import com.luopc.platform.cloud.web.exception.TimeoutFallbackException;
+import com.luopc.platform.boot.web.exception.TimeoutFallbackException;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

@@ -1,6 +1,6 @@
-package com.luopc.platform.cloud.web.config;
+package com.luopc.platform.boot.web.config;
 
-import com.luopc.platform.cloud.web.util.HttpClientPortUtil;
+import com.luopc.platform.boot.web.util.HttpClientPortUtil;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;

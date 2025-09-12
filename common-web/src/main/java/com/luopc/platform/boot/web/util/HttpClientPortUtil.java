@@ -1,4 +1,4 @@
-package com.luopc.platform.cloud.web.util;
+package com.luopc.platform.boot.web.util;
 
 import com.google.common.collect.Lists;
 import com.luopc.platform.common.core.util.SmartNumberUtil;

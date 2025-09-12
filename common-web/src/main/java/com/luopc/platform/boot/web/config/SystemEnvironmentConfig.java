@@ -1,4 +1,4 @@
-package com.luopc.platform.cloud.web.config;
+package com.luopc.platform.boot.web.config;
 
 import com.luopc.platform.common.core.env.SystemEnvironment;
 import com.luopc.platform.common.core.env.SystemEnvironmentEnum;

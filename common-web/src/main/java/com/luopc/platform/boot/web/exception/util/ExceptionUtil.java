@@ -1,4 +1,4 @@
-package com.luopc.platform.cloud.web.exception.util;
+package com.luopc.platform.boot.web.exception.util;
 
 import lombok.extern.slf4j.Slf4j;
 
