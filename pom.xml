@@ -12,7 +12,7 @@
     <parent>
         <groupId>com.luopc.platform.parent</groupId>
         <artifactId>platform-boot-ai</artifactId>
-        <version>2.0.2-SNAPSHOT</version>
+        <version>2.0.7-SNAPSHOT</version>
     </parent>
     <modules>
         <module>common-core</module>
@@ -21,7 +21,13 @@
         <module>common-web</module>
         <module>common-trace</module>
         <module>common-redis</module>
+        <module>common-amq</module>
+        <module>common-example</module>
     </modules>
+    <properties>
+        <platform.unix.version>2.0.6</platform.unix.version>
+        <java.version>21</java.version>
+    </properties>
     <dependencyManagement>
         <dependencies>
             <!-- Monitoring and Tracing -->
@@ -42,17 +48,17 @@
                 <artifactId>bcprov-jdk18on</artifactId>
                 <version>${bcprov.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
 
             <!-- Documentation -->
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-                <version>${springdoc.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
-                <version>${knife4j.version}</version>
+                <version>${springdoc.webmvc.version}</version>
             </dependency>
 
             <!-- Utilities -->

@@ -1,0 +1,18 @@
+server:
+  port: 0
+
+spring:
+# 允许bean定义覆盖
+#  main:
+#    allow-bean-definition-overriding: true
+  application:
+    name: example-service
+    version: '@project.version@'
+  profiles:
+    active: '@profiles.active@'
+    include: web,nacos,amq
+  cloud:
+    nacos:
+      discovery:
+        metadata:
+          context-path: ${server.servlet.context-path}

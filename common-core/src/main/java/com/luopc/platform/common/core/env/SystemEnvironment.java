@@ -32,7 +32,8 @@ public class SystemEnvironment {
         this.isProd = SystemEnvironmentEnum.PRD.equals(currentEnvironment);
         this.isDev = SystemEnvironmentEnum.DEV.equals(currentEnvironment);
         this.isTest = (SystemEnvironmentEnum.UAT.equals(currentEnvironment)
-                || SystemEnvironmentEnum.SUP.equals(currentEnvironment) | SystemEnvironmentEnum.PRE.equals(currentEnvironment));
+                || SystemEnvironmentEnum.SUP.equals(currentEnvironment)
+                || SystemEnvironmentEnum.PRE.equals(currentEnvironment));
         this.projectName = projectName;
         this.currentEnvironment = currentEnvironment;
     }

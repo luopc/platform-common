@@ -40,12 +40,14 @@ if [ "$BUILD_TYPE" = "release" ]; then
   fi
 
   # 更新依赖版本
-  mvn versions:use-latest-releases -Dincludes=com.luopc.platform.cloud.common -DgenerateBackupPoms=false -DallowSnapshots=false
+  mvn versions:use-latest-releases -Dincludes=com.luopc.platform.parent -DgenerateBackupPoms=false -DallowSnapshots=false
+  mvn versions:use-latest-releases -Dincludes=com.luopc.platform.boot -DgenerateBackupPoms=false -DallowSnapshots=false
 
   # 检测版本变更
   echo -e "${YELLOW}Detecting version changes${NC}"
-  DIFF=$(git diff --stat)
-  if [ -n "$DIFF" ]; then
+  # 检查是否有未提交的修改
+  changes=$(git status --porcelain)
+  if [ -n "$changes" ]; then
     echo -e "${GREEN}Changes detected, committing version updates${NC}"
     git add .
 
@@ -55,39 +57,49 @@ if [ "$BUILD_TYPE" = "release" ]; then
       if ! git commit -m "#plugin - auto committed"; then
         echo -e "${RED}Error: Failed to commit version changes${NC}"
         exit 1
+      else
+        echo -e "${GREEN}Version changed and committed${NC}"
       fi
     fi
+  else
+    echo -e "${YELLOW}No changes detected, skipping commit${NC}"
   fi
+
+  VERSION=$(mvn -q -Dexec.executable="echo" -Dexec.args='${project.version}' --non-recursive org.codehaus.mojo:exec-maven-plugin:1.6.0:exec | awk -v FS="-" '{print $1}')
 
   # 执行发布
   echo -e "${GREEN}Starting release build${NC}"
   if ! mvn -B clean release:prepare-with-pom release:perform \
-      -DuseReleaseProfile=false \
-      -Dmaven.javadoc.skip=true \
-      -Puat; then
+    -DuseReleaseProfile=false \
+    -Dmaven.javadoc.skip=true \
+    -Puat; then
     echo -e "${RED}Error: Release build failed${NC}"
     exit 1
   fi
+  echo -e "${YELLOW}[INFO] released version is $VERSION ${NC}"
+  echo -e "${GREEN}deploy -p {package} -v $VERSION -h data${NC}"
 
 elif [ "$BUILD_TYPE" = "snapshot" ]; then
   echo -e "${GREEN}Building Snapshot Version${NC}"
 
   if ! mvn -B clean deploy \
-      -Dmaven.javadoc.skip=true \
-      -Puat; then
+    -Dmaven.javadoc.skip=true \
+    -Puat; then
     echo -e "${RED}Error: Snapshot build failed${NC}"
     exit 1
   fi
+
+  # 获取版本号
+  VERSION=$(mvn -q -Dexec.executable="echo" \
+    -Dexec.args='${project.version}' \
+    --non-recursive \
+    org.codehaus.mojo:exec-maven-plugin:1.6.0:exec)
+
+  echo -e "${YELLOW}[INFO] Deployed snapshot version: ${VERSION}${NC}"
+  echo -e "${GREEN}deploy -p {package} -v $VERSION -h data${NC}"
 else
   echo -e "${RED}Error: Invalid build type '$BUILD_TYPE'${NC}"
   usage
 fi
 
-# 获取版本号
-VERSION=$(mvn -q -Dexec.executable="echo" \
-  -Dexec.args='${project.version}' \
-  --non-recursive \
-  org.codehaus.mojo:exec-maven-plugin:1.6.0:exec)
-
-echo -e "${GREEN}Deployed snapshot version: ${VERSION}${NC}"
-echo "deploy -p {package} -v $VERSION -h data"
+echo -e "${NC}java -jar -Dspring.profiles.active=dev common-example/target/common-example.jar${NC}"

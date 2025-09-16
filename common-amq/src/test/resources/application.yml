@@ -1,0 +1,4 @@
+spring:
+  activemq:
+    packages:
+      trusted: "com.luopc.platform.cloud.amq.bean.entity"

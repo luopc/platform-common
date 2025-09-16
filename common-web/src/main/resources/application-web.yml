@@ -1,3 +1,8 @@
+# 允许bean定义覆盖
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
 # springdoc-openapi项目配置
 springdoc:
   swagger-ui:
@@ -5,25 +10,10 @@ springdoc:
     tags-sorter: alpha
     operations-sorter: alpha
     show-extensions: true
+    enabled: true
   api-docs:
     path: /v3/api-docs
   default-flat-param-object: true
-# knife4j的增强配置，不需要增强可以不配
-knife4j:
-  enable: true
-  setting:
-    language: EN
-    swagger-model-name: Response Entities
-  #  documents:
-  #    - name: 标题1
-  #      locations: classpath:markdown/*
-  #      group: default
-  #    - name: 标题2
-  #      locations: classpath:markdown1/*
-  #      group: 用户模块
-  basic:
-    enable: false
-    username: zhangsan
-    password: lisi
+
 
 
