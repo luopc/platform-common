@@ -81,10 +81,8 @@ if [ "$BUILD_TYPE" = "release" ]; then
 
 elif [ "$BUILD_TYPE" = "snapshot" ]; then
   echo -e "${GREEN}Building Snapshot Version${NC}"
-
-  if ! mvn -B clean deploy \
-    -Dmaven.javadoc.skip=true \
-    -Puat; then
+  # -Dmaven.javadoc.skip=true \
+  if ! mvn -B clean deploy -Puat; then
     echo -e "${RED}Error: Snapshot build failed${NC}"
     exit 1
   fi
