@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.luopc.platform.boot</groupId>
     <artifactId>platform-common</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
     <packaging>pom</packaging>
     <name>Platform Common</name>
     <description>Common modules for platform services</description>
@@ -132,6 +132,6 @@
         <url>https://github.com/luopc/platform-common/</url>
         <connection>scm:git:https://github.com/luopc/platform-common</connection>
         <developerConnection>scm:git:https://github.com/luopc/platform-common</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v1.0.2</tag>
     </scm>
 </project>
