@@ -41,7 +41,6 @@ if [ "$BUILD_TYPE" = "release" ]; then
 
   # 更新依赖版本
   mvn versions:use-latest-releases -Dincludes=com.luopc.platform.parent -DgenerateBackupPoms=false -DallowSnapshots=false
-  mvn versions:use-latest-releases -Dincludes=com.luopc.platform.boot -DgenerateBackupPoms=false -DallowSnapshots=false
 
   # 检测版本变更
   echo -e "${YELLOW}Detecting version changes${NC}"
