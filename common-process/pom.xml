@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.luopc.platform.boot</groupId>
         <artifactId>platform-common</artifactId>
-        <version>1.0.5</version>
+        <version>1.0.6-SNAPSHOT</version>
     </parent>
     <artifactId>common-process</artifactId>
     <packaging>jar</packaging>
