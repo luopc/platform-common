@@ -112,6 +112,17 @@
     <!-- 2.2 level为 INFO 日志，时间滚动输出  -->
     <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- 正在记录的日志文档的路径及文档名 -->
+        <!--
+        file属性表示原始的未经加工的日志文件名，若不为空，则在日志触发滚动事件时，会调用该方法
+        boolean result = srcFile.renameTo(targetFile)将原始日志文件名重命名到归档文件名，
+        然后再生成一个原始日志文件名作为当前生效的日志文件，
+        然而renameTo方法在WIN系统上不保证成功，即result有可能为false，导致日志文件不能分割；
+        这时候logback框架的RenameUtil类会给出这样的建议：
+        "Please consider leaving the [file] option of " + RollingFileAppender.class.getSimpleName() + " empty."。
+        而file属性为空，则不会执行renameTo方法，而是旧文件直接作为归档文件，然后生成新的日志文件来作为当前生效的日志文件，
+        所以规避了renameTo方法的失败，使日志文件能够正确分割
+        基本上，windows不接受文件名中的":“
+        -->
         <file>${log.path}/${log.file}.log</file>
         <!--日志文档输出格式-->
         <encoder>
