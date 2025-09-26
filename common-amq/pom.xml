@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.luopc.platform.boot</groupId>
         <artifactId>platform-common</artifactId>
-        <version>1.0.3-SNAPSHOT</version>
+        <version>1.0.4-SNAPSHOT</version>
     </parent>
     <artifactId>common-amq</artifactId>
 
@@ -46,6 +46,8 @@
                     <descriptors>
                         <descriptor>src/assembly/assembly.xml</descriptor>
                     </descriptors>
+                    <finalName>${project.artifactId}-${project.version}</finalName>
+                    <appendAssemblyId>true</appendAssemblyId>
                 </configuration>
                 <executions>
                     <execution>

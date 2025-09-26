@@ -3,7 +3,7 @@
     <parent>
         <groupId>com.luopc.platform.boot</groupId>
         <artifactId>platform-common</artifactId>
-        <version>1.0.3-SNAPSHOT</version>
+        <version>1.0.4-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>common-example</artifactId>
@@ -42,11 +42,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.luopc.platform.parent</groupId>
-            <artifactId>platform-unix</artifactId>
-            <version>${platform.unix.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.luopc.platform.boot</groupId>
             <artifactId>common-web</artifactId>
             <version>${project.version}</version>
@@ -78,7 +73,7 @@
                 <version>${spring.boot.version}</version>
                 <configuration>
                     <!-- 指定该Main Class为全局的唯一入口 -->
-                    <mainClass>com.luopc.platform.web.ExampleApplication</mainClass>
+                    <mainClass>com.luopc.platform.web.AssemblyApplication</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>

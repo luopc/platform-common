@@ -13,6 +13,7 @@ springdoc:
     enabled: true
   api-docs:
     path: /v3/api-docs
+    enabled: true
   default-flat-param-object: true
 
 

@@ -1,0 +1,45 @@
+server:
+  port: 0
+  servlet:
+    encoding:
+      enabled: true
+      force: true
+      charset: UTF-8
+
+hello: Hello spring-boot-assembly
+
+spring:
+# 允许bean定义覆盖
+#  main:
+#    allow-bean-definition-overriding: true
+  application:
+    name: assembly-service
+    version: '@project.version@'
+  profiles:
+    active: '@profiles.active@'
+    include: web,nacos,amq
+  # UTF-8编码
+  cloud:
+    nacos:
+      discovery:
+        metadata:
+          context-path: ${server.servlet.context-path}
+
+  # local环境jdbc配置
+  datasource:
+    url: jdbc:h2:mem:spring-boot-assembly;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: root
+    password: root
+    driver-class-name: org.h2.Driver
+    # 每次启动程序,都会执行该SQL脚本
+    # 每次启动程序,都会执行该SQL脚本
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  sql:
+    init:
+      platform: h2
+      schema-locations: classpath:db/schema.sql
+      data-locations: classpath:db/data.sql
+      encoding: utf-8
