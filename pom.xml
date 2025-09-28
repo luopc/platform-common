@@ -14,6 +14,7 @@
     </parent>
     <modules>
         <module>common-core</module>
+        <module>common-data</module>
         <module>common-process</module>
         <module>common-test</module>
         <module>common-web</module>
