@@ -1,5 +1,6 @@
 package com.luopc.platform.web.result;
 
+import com.luopc.platform.common.core.exception.ErrorCode;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,6 +53,13 @@ public class ResponseMessage<T> {
         return new Builder<T>()
                 .code(code)
                 .message(message)
+                .build();
+    }
+
+    public static <T> ResponseMessage<T> error(ErrorCode errorCode) {
+        return new Builder<T>()
+                .code(String.valueOf(errorCode.getCode()))
+                .message(errorCode.getMessage())
                 .build();
     }
 
