@@ -28,7 +28,7 @@
 
     <!-- 定义生产环境通用属性 -->
     <!--%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} [%X{traceId:-},%X{spanId:-}] [%X{userId:-},%X{clientIp:-}] - %msg%n -->
-    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{49} - %msg%n"/>
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%tid:%thread] %-5level %logger{49} - %msg%n"/>
     <property name="JSON_PATTERN" value='{"timestamp":"%d{yyyy-MM-dd HH:mm:ss.SSS}","level":"%level","thread":"%thread","logger":"%logger","traceId":"%X{traceId:-}","spanId":"%X{spanId:-}","userId":"%X{userId:-}","clientIp":"%X{clientIp:-}","message":"%message","exception":"%ex"}%n'/>
 
     <!--1. 输出到控制台-->

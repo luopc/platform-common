@@ -1,11 +1,6 @@
 spring:
   jpa:
     open-in-view: false
-    properties:
-      hibernate:
-        transaction:
-          jta:
-            platform: false
   # 数据库连接信息
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
@@ -32,9 +27,6 @@ spring:
       validation-timeout: 5000
       # 连接泄漏检测阈值（毫秒）
       leak-detection-threshold: 60000
-logging:
-  level:
-    com.zaxxer.hikari: DEBUG
 
 ---
 spring:
