@@ -23,7 +23,7 @@ if [ $# -eq 0 ]; then
 else
   BUILD_TYPE=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 fi
-
+start_time=$(date +%s)
 # 参数校验
 if [ "$BUILD_TYPE" != "release" ] && [ "$BUILD_TYPE" != "snapshot" ]; then
   echo -e "${RED}Error: Invalid build type argument${NC}"
@@ -75,7 +75,8 @@ if [ "$BUILD_TYPE" = "release" ]; then
     echo -e "${RED}Error: Release build failed${NC}"
     exit 1
   fi
-  echo -e "${YELLOW}[INFO] released version is $VERSION ${NC}"
+  end_time=$(date +%s)
+  echo -e "${YELLOW}[INFO] released version is $VERSION, total duration time：$((end_time - start_time))s${NC}"
   echo -e "${GREEN}deploy -p {package} -v $VERSION -h data${NC}"
 
 elif [ "$BUILD_TYPE" = "snapshot" ]; then
@@ -91,8 +92,8 @@ elif [ "$BUILD_TYPE" = "snapshot" ]; then
     -Dexec.args='${project.version}' \
     --non-recursive \
     org.codehaus.mojo:exec-maven-plugin:1.6.0:exec)
-
-  echo -e "${YELLOW}[INFO] Deployed snapshot version: ${VERSION}${NC}"
+  end_time=$(date +%s)
+  echo -e "${YELLOW}[INFO] Deployed snapshot version: ${VERSION}, total duration time：$((end_time - start_time))s${NC}"
   echo -e "${GREEN}deploy -p {package} -v $VERSION -h data${NC}"
 else
   echo -e "${RED}Error: Invalid build type '$BUILD_TYPE'${NC}"
