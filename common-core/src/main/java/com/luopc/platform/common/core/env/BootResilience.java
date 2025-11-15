@@ -8,13 +8,14 @@ import lombok.Getter;
 public class BootResilience {
 
     private boolean isHotWormModel;
-    private long healthCheckInterval;
+    private long initialDelayMs;
+    private long healthCheckIntervalMs;
     private volatile boolean isActive;
     private volatile boolean isStandby;
 
 
-    public BootResilience(long healthCheckInterval) {
-        this.healthCheckInterval = healthCheckInterval;
+    public BootResilience(long healthCheckIntervalMs) {
+        this.healthCheckIntervalMs = healthCheckIntervalMs;
         this.isActive = false;
         this.isStandby = true;
     }

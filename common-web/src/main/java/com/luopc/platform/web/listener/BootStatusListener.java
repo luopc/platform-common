@@ -20,9 +20,12 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class BootStatusListener implements InitializingBean, ApplicationRunner, DisposableBean {
     private final ScheduledExecutorService healthCheckExecutorService = Executors.newSingleThreadScheduledExecutor();
+    private static final long INITIAL_DELAY_MS = Duration.ofSeconds(30).toMillis();
+    private HotWarmHealthChecker hotWarmHealthChecker;
 
     @Resource
     protected BootEnvironment bootEnvironment;
+
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -70,27 +73,31 @@ public class BootStatusListener implements InitializingBean, ApplicationRunner, 
 
     private void healthCheck() {
         if (bootEnvironment.isHotWormModel()) {
-            HotWarmHealthChecker hotWarmHealthChecker = new HotWarmHealthChecker();
+            hotWarmHealthChecker = new HotWarmHealthChecker();
             healthCheckExecutorService.scheduleAtFixedRate(() -> {
-                        HealthCheckResult result = hotWarmHealthChecker.check();
-                        log.info("Health Check Result: {}", result);
-                        if (result.isSuccess()) {
-                            if (!bootEnvironment.getResilience().isActive()) {
-                                doInit();
-                                doStart();
+                        try {
+                            HealthCheckResult result = hotWarmHealthChecker.check();
+                            log.info("Health Check Result: {}", result);
+                            if (result.isSuccess()) {
+                                if (!bootEnvironment.getResilience().isActive()) {
+                                    doInit();
+                                    doStart();
+                                } else {
+                                    log.info("Service currently is active, do nothing...");
+                                }
                             } else {
-                                log.info("Service currently is active, do nothing...");
+                                if (!bootEnvironment.getResilience().isStandby()) {
+                                    doDispose();
+                                    doStop();
+                                } else {
+                                    log.info("Service currently is standby, do nothing...");
+                                }
                             }
-                        } else {
-                            if (!bootEnvironment.getResilience().isStandby()) {
-                                doDispose();
-                                doStop();
-                            } else {
-                                log.info("Service currently is standby, do nothing...");
-                            }
+                        } catch (Exception e) {
+                            log.error("Health check task failed", e);
                         }
                     },
-                    Duration.ofSeconds(30).toMillis(),
+                    INITIAL_DELAY_MS,
                     bootEnvironment.getHealthCheckInterval(),
                     TimeUnit.MILLISECONDS);
         }

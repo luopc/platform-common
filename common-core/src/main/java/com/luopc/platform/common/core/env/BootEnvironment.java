@@ -47,7 +47,7 @@ public class BootEnvironment {
     }
 
     public long getHealthCheckInterval() {
-        if (Objects.nonNull(resilience)) return resilience.getHealthCheckInterval();
+        if (Objects.nonNull(resilience)) return resilience.getHealthCheckIntervalMs();
         return 0;
     }
 

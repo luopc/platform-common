@@ -29,6 +29,7 @@ public class HotWarmHealthChecker implements HealthChecker {
 
     private boolean checkResilience() {
         //TODO - implement checking logic
+        // send current status and hostName to discovery service to identify whether it's need to be activated or not
         return SmartNumberUtil.nextInt(100) % 2 == 0;
     }
 
