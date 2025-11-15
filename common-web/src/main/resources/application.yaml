@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+# 允许bean定义覆盖
+#  main:
+#    allow-bean-definition-overriding: true
+  application:
+    name: web-service
+    version: '@project.version@'
+  profiles:
+    active: '@profiles.active@'
+    include: web
+

@@ -1,5 +1,5 @@
 server:
-  port: 0
+  port: 8080
 
 spring:
 # 允许bean定义覆盖
@@ -10,9 +10,5 @@ spring:
     version: '@project.version@'
   profiles:
     active: '@profiles.active@'
-    include: web,nacos,amq
-  cloud:
-    nacos:
-      discovery:
-        metadata:
-          context-path: ${server.servlet.context-path}
+    include: web,amq
+

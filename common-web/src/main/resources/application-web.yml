@@ -14,11 +14,19 @@ management:
     web:
       base-path: /actuator
       exposure:
-        include: [ 'prometheus','health' ]
+        include: [ 'prometheus','health', 'info' ]
         exclude: [ 'shutdown' ]
+      path-mapping:
+        prometheus: prometheus
+        health: health
+        info: info
   endpoint:
     health:
       show-details: always
+    prometheus:
+      access: read_only
+    info:
+      access: read_only
   prometheus:
     metrics:
       export:
