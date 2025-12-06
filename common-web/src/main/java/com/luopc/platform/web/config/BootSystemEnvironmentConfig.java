@@ -1,7 +1,7 @@
 package com.luopc.platform.web.config;
 
-import com.luopc.platform.common.core.env.BootEnvironment;
-import com.luopc.platform.common.core.env.BootEnvironmentEnum;
+import com.luopc.platform.web.common.core.env.BootEnvironment;
+import com.luopc.platform.web.common.core.env.BootEnvironmentEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.StringUtils;

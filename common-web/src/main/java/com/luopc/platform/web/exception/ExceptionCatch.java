@@ -1,8 +1,8 @@
 package com.luopc.platform.web.exception;
 
 import com.google.common.collect.ImmutableMap;
-import com.luopc.platform.common.core.exception.ErrorCode;
-import com.luopc.platform.common.core.exception.PlatformErrorCode;
+import com.luopc.platform.web.common.core.exception.ErrorCode;
+import com.luopc.platform.web.common.core.exception.PlatformErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;

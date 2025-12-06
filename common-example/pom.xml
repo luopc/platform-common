@@ -59,6 +59,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>com.luopc.platform.boot</groupId>
+            <artifactId>common-eureka</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>

@@ -101,4 +101,4 @@ else
   usage
 fi
 
-echo -e "${NC}java -jar -Dspring.profiles.active=dev common-example/target/common-example.jar${NC}"
+echo -e "${NC}java -jar -Dspring.profiles.active=dev -Dapp=example common-example/target/common-example.jar${NC}"

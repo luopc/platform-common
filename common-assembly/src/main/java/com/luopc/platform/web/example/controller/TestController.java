@@ -1,9 +1,9 @@
 package com.luopc.platform.web.example.controller;
 
-import com.luopc.platform.common.core.exception.BusinessException;
-import com.luopc.platform.common.core.exception.PlatformErrorCode;
-import com.luopc.platform.common.core.util.SmartJsonUtil;
-import com.luopc.platform.common.core.util.SmartNumIDUtil;
+import com.luopc.platform.web.common.core.exception.BusinessException;
+import com.luopc.platform.web.common.core.exception.PlatformErrorCode;
+import com.luopc.platform.web.common.core.util.SimpleJsonUtil;
+import com.luopc.platform.web.common.core.util.SimpleNumIDUtil;
 import com.luopc.platform.web.example.request.UserReq;
 import com.luopc.platform.web.result.PageParam;
 import com.luopc.platform.web.result.PageResult;
@@ -37,9 +37,9 @@ public class TestController {
     public String getUser(@RequestParam("name") String name) {
         log.info("Received request to list users by name:{}", name);
         Map<String, Object> user = new HashMap<>();
-        user.put("id", SmartNumIDUtil.nextPkId());
+        user.put("id", SimpleNumIDUtil.nextPkId());
         user.put("name", StringUtils.isNoneBlank(name) ? name : "Zhang san");
-        return SmartJsonUtil.writeJson(user);
+        return SimpleJsonUtil.writeJson(user);
     }
 
     @Operation(summary = "获取多条记录", description = "不需要登录后访问")
@@ -83,12 +83,12 @@ public class TestController {
         List<Map<String, Object>> userList = new ArrayList<>();
 
         Map<String, Object> user = new HashMap<>();
-        user.put("id", SmartNumIDUtil.nextPkId());
+        user.put("id", SimpleNumIDUtil.nextPkId());
         user.put("name", StringUtils.isNoneBlank(userReq.getName()) ? userReq.getName() : "Zhang san");
         userList.add(user);
 
         user = new HashMap<>();
-        user.put("id", SmartNumIDUtil.nextPkId());
+        user.put("id", SimpleNumIDUtil.nextPkId());
         user.put("name", StringUtils.isNoneBlank(userReq.getName()) ? userReq.getName() : "Li si");
         userList.add(user);
         return userList;

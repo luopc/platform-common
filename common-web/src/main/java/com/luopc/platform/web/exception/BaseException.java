@@ -1,7 +1,7 @@
 package com.luopc.platform.web.exception;
 
 import com.google.common.collect.Lists;
-import com.luopc.platform.common.core.exception.ErrorCode;
+import com.luopc.platform.web.common.core.exception.ErrorCode;
 import lombok.Getter;
 
 import java.util.List;

@@ -1,6 +1,10 @@
 server:
   port: 8080
 
+platform:
+  resilience:
+    isHotWarmModel: false
+
 spring:
 # 允许bean定义覆盖
 #  main:
@@ -10,5 +14,5 @@ spring:
     version: '@project.version@'
   profiles:
     active: '@profiles.active@'
-    include: web,amq
+    include: web,eureka
 

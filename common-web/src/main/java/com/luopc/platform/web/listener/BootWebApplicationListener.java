@@ -15,6 +15,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+import static com.luopc.platform.web.common.core.constant.LoggingConstants.INSTANCE_KEY;
+
 /**
  * @author Robin
  */
@@ -33,6 +35,7 @@ public class BootWebApplicationListener implements ApplicationListener<WebServer
         Integer port = server.getPort();
 
         String contextPath = env.getProperty("server.servlet.context-path");
+        String instanceKey = env.getProperty(INSTANCE_KEY);
         if (contextPath == null) {
             contextPath = "";
         }

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 扫描配置文件变更，测试环境建议开启（30秒扫描一次），1.5.21版本兼容 -->
+<configuration scan="true" scanPeriod="30 seconds" debug="false">
+    <!-- 1. 基础环境配置（测试环境专属） -->
+    <!-- 日志输出根目录，Windows/Linux兼容 -->
+    <property name="LOG_BASE_DIR" value="${LOG_BASE_DIR:-./logs/test}"/>
+    <!-- 测试环境标识（日志中显式标注，便于排查） -->
+    <property name="ENV_TAG" value="[TEST]"/>
+    <!-- 字符集（1.5.21版本推荐显式指定） -->
+    <property name="LOG_CHARSET" value="UTF-8"/>
+
+    <!-- 2. 引入Spring Boot默认配置（保留原有逻辑，适配1.5.21） -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+    <!-- 3. 彩色日志渲染规则（兼容Spring Boot + logback 1.5.21） -->
+    <conversionRule conversionWord="clr" class="org.springframework.boot.logging.logback.ColorConverter" />
+    <conversionRule conversionWord="wex" class="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
+    <conversionRule conversionWord="wEx" class="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+
+    <!-- 4. 日志格式配置（新增测试环境标识，优化可读性） -->
+    <!-- 控制台彩色日志格式（保留原有样式，新增ENV_TAG） -->
+    <property name="CONSOLE_LOG_PATTERN" value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS,Asia/Shanghai}){faint} %clr(${ENV_TAG}){yellow} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+    <!-- 文件日志格式（无颜色，新增ENV_TAG，便于日志分析工具解析） -->
+    <property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS,Asia/Shanghai} ${ENV_TAG} %5p ${PID:- } --- [%15.15t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+
+    <!-- 5. 控制台Appender（TEST_CONSOLE，适配1.5.21） -->
+    <appender name="TEST_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 1.5.21版本推荐使用PrudentMode，避免多线程输出乱码 -->
+        <prudent>true</prudent>
+        <encoder>
+            <Pattern>${CONSOLE_LOG_PATTERN}</Pattern>
+            <charset>${LOG_CHARSET}</charset>
+        </encoder>
+        <!-- 测试环境仅输出INFO及以上日志到控制台（避免DEBUG冗余） -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+    </appender>
+
+    <!-- 6. 文件滚动Appender（TEST_FILE，测试环境日志持久化，适配1.5.21） -->
+    <appender name="TEST_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <prudent>true</prudent>
+        <!-- 日志文件路径 -->
+        <file>${LOG_BASE_DIR}/app-test.log</file>
+        <!-- 滚动策略：按大小+时间切割（1.5.21版本推荐TimeBasedRollingPolicy） -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 归档文件命名规则：按天归档，每个文件最大100MB -->
+            <fileNamePattern>${LOG_BASE_DIR}/app-test-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <!-- 单个文件最大大小（1.5.21版本支持单位：KB/MB/GB） -->
+            <maxFileSize>100MB</maxFileSize>
+            <!-- 日志保留天数（测试环境保留7天） -->
+            <maxHistory>7</maxHistory>
+            <!-- 总归档日志大小上限（避免磁盘占满） -->
+            <totalSizeCap>10GB</totalSizeCap>
+            <!-- 自动删除旧日志（1.5.21版本默认开启，显式指定更清晰） -->
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>${FILE_LOG_PATTERN}</Pattern>
+            <charset>${LOG_CHARSET}</charset>
+        </encoder>
+        <!-- 文件日志输出DEBUG及以上（便于测试排查问题） -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+    </appender>
+
+    <!-- 7. 日志级别控制（精准到包，适配测试场景） -->
+    <!-- 业务代码包：DEBUG级别（便于测试排查） -->
+    <logger name="com.luopc" level="DEBUG" additivity="false">
+        <appender-ref ref="TEST_CONSOLE" />
+<!--        <appender-ref ref="TEST_FILE" />-->
+    </logger>
+    <!-- 第三方框架日志：INFO级别（避免冗余，1.5.21版本兼容） -->
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="com.zaxxer.hikari" level="INFO"/>
+    <logger name="org.hibernate" level="INFO"/>
+    <logger name="io.netty" level="INFO"/>
+    <logger name="ch.qos" level="WARN"/>
+    <!-- 根日志：INFO级别（兜底） -->
+    <root level="INFO">
+        <appender-ref ref="TEST_CONSOLE" />
+<!--        <appender-ref ref="TEST_FILE" />-->
+    </root>
+
+</configuration>

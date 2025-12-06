@@ -1,0 +1,29 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    healthcheck:
+      enabled: true
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://app-server.luopc.com:8052/eureka,http://data-server.luopc.com:8052/eureka
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8052/eureka
+---
+spring:
+  config:
+    activate:
+      on-profile: uat
+eureka:
+  client:
+    service-url:
+      defaultZone: http://app-server.luopc.com:8052/eureka,http://data-server.luopc.com:8052/eureka

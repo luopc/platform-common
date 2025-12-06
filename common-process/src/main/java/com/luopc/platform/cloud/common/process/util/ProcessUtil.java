@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -57,7 +58,7 @@ public class ProcessUtil {
             for (int i = 0; i <= matcher.groupCount(); i++) {
                 String sourceStr = matcher.group(i);
                 String encodeStr = sourceStr.replace("00", "%");
-                String decodeStr = URLDecoder.decode(encodeStr);
+                String decodeStr = URLDecoder.decode(encodeStr, StandardCharsets.UTF_8);
 
                 sourceValue = sourceValue.replace(sourceStr, decodeStr);
                 log.info("convert sourceStr[{}] to encodeStr[{}] and decode to [{}], result value={}", sourceStr, encodeStr, decodeStr, sourceValue);

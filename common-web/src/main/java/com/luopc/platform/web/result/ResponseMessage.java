@@ -1,6 +1,6 @@
 package com.luopc.platform.web.result;
 
-import com.luopc.platform.common.core.exception.ErrorCode;
+import com.luopc.platform.web.common.core.exception.ErrorCode;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
 package com.luopc.platform.web.controller;
 
-import com.luopc.platform.common.core.util.SmartJsonUtil;
-import com.luopc.platform.common.core.util.SmartNumIDUtil;
+import com.luopc.platform.web.common.core.util.SimpleJsonUtil;
+import com.luopc.platform.web.common.core.util.SimpleNumIDUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -31,8 +31,8 @@ public class DemoTestController {
     public String getUser(@RequestParam("name") String name) {
         log.info("Received request to get user by name:{}", name);
         Map<String, Object> user = new HashMap<>();
-        user.put("id", SmartNumIDUtil.nextPkId());
+        user.put("id", SimpleNumIDUtil.nextPkId());
         user.put("name", StringUtils.isNoneBlank(name) ? name : "Zhang san");
-        return SmartJsonUtil.writeJson(user);
+        return SimpleJsonUtil.writeJson(user);
     }
 }

@@ -1,8 +1,8 @@
 package com.luopc.platform.web.util;
 
 import com.google.common.collect.Lists;
-import com.luopc.platform.common.core.util.SmartNumberUtil;
-import com.luopc.platform.common.core.util.SmartRandomUtil;
+import com.luopc.platform.web.common.core.util.SimpleNumberUtil;
+import com.luopc.platform.web.common.core.util.SimpleRandomUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -33,8 +33,8 @@ public class HttpClientPortUtil {
     }
 
     public static int randomPort() {
-        String startNum = String.format("%02d", SmartRandomUtil.randomGet(START_NUM));
-        String middleNum = String.format("%02d", SmartNumberUtil.randomNumber(3, 58));
+        String startNum = String.format("%02d", SimpleRandomUtil.randomGet(START_NUM));
+        String middleNum = String.format("%02d", SimpleNumberUtil.randomNumber(3, 58));
         return Integer.parseInt(startNum + middleNum + 7);
     }
 

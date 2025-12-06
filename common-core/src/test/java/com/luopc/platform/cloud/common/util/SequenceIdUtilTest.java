@@ -1,7 +1,7 @@
 package com.luopc.platform.cloud.common.util;
 
-import com.luopc.platform.common.core.util.GeneratorUtil;
-import com.luopc.platform.common.core.util.SequenceIdUtil;
+import com.luopc.platform.web.common.core.util.SimpleTicketGeneratorUtil;
+import com.luopc.platform.web.common.core.util.SequenceIdUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -40,11 +40,11 @@ class SequenceIdUtilTest {
 
     @Test
     void testUuid(){
-        String uuid = GeneratorUtil.shortUuid();
-        log.info("GenerateShortId = {}", uuid);
-        String longTick = GeneratorUtil.longTicket();
-        log.info("GenerateShortId = {}", longTick);
-        String shortTick = GeneratorUtil.shortTicket();
-        log.info("GenerateShortId = {}", shortTick);
+        String uuid = SimpleTicketGeneratorUtil.shortUuid();
+        log.info("GenerateShortUuid = {}", uuid);
+        String longTick = SimpleTicketGeneratorUtil.longTicket();
+        log.info("GenerateShortLongTicket = {}", longTick);
+        String shortTick = SimpleTicketGeneratorUtil.shortTicket();
+        log.info("GenerateShortShortTicket = {}", shortTick);
     }
 }
