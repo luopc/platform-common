@@ -14,5 +14,7 @@ spring:
     version: '@project.version@'
   profiles:
     active: '@profiles.active@'
-    include: web,eureka
+    include: web, nacos
+
+
 

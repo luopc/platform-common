@@ -57,6 +57,11 @@
         </dependency>
 <!--        <dependency>-->
 <!--            <groupId>com.luopc.platform.boot</groupId>-->
+<!--            <artifactId>common-nacos</artifactId>-->
+<!--            <version>${project.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.luopc.platform.boot</groupId>-->
 <!--            <artifactId>common-amq</artifactId>-->
 <!--            <version>${project.version}</version>-->
 <!--            <scope>test</scope>-->
