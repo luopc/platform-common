@@ -56,15 +56,9 @@
             <version>${project.version}</version>
         </dependency>
 <!--        <dependency>-->
-<!--            <groupId>com.luopc.platform.boot</groupId>-->
-<!--            <artifactId>common-nacos</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.luopc.platform.boot</groupId>-->
-<!--            <artifactId>common-amq</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--            <scope>test</scope>-->
+<!--            <groupId>com.luopc.platform.boot.middleware</groupId>-->
+<!--            <artifactId>nacos-client</artifactId>-->
+<!--            <version>1.0.3</version>-->
 <!--        </dependency>-->
         <dependency>
             <groupId>com.luopc.platform.boot</groupId>

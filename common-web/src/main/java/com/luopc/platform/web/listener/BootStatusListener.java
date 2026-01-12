@@ -109,8 +109,8 @@ public class BootStatusListener implements InitializingBean, ApplicationRunner, 
     }
 
     private void printStatus(String status) {
-        String f = "\t".repeat(25);
-        String s = "=".repeat(225);
+        String f = "\t".repeat(4);
+        String s = "=".repeat(100);
         log.info("\n{}\n{}\n{}", s, f + status, s);
     }
 }

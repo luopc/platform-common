@@ -46,17 +46,16 @@
             <artifactId>common-web</artifactId>
             <version>${project.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.luopc.platform.boot</groupId>-->
-<!--            <artifactId>common-nacos</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.luopc.platform.boot</groupId>-->
-<!--            <artifactId>common-amq</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.luopc.platform.boot.middleware</groupId>
+            <artifactId>nacos-client</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.luopc.platform.boot</groupId>
+            <artifactId>rabbitmq-client</artifactId>
+            <version>1.0.4</version>
+        </dependency>
         <dependency>
             <groupId>com.luopc.platform.boot</groupId>
             <artifactId>common-test</artifactId>

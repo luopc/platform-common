@@ -55,7 +55,7 @@ spring:
       on-profile: dev
   # 数据库连接信息
   datasource:
-    url: jdbc:mysql://data.luopc.com:3306/pb_main_all_dev?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    url: jdbc:mysql://data.luopc.com:3306/pb_main_all_dev?allowPublicKeyRetrieval=true&characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: admin
     password: db_admin@123
@@ -67,7 +67,7 @@ spring:
       on-profile: uat
   # 数据库连接信息
   datasource:
-    url: jdbc:mysql://data.luopc.com:3306/pb_main_all_uat?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    url: jdbc:mysql://data.luopc.com:3306/pb_main_all_uat?allowPublicKeyRetrieval=true&characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: admin
     password: db_admin@123

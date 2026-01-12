@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8988
 
 spring:
 # 允许bean定义覆盖
