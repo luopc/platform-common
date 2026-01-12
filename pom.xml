@@ -50,6 +50,17 @@
                 <version>${lombok.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.luopc.platform.boot.middleware</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>1.0.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.luopc.platform.boot.middleware</groupId>
+                <artifactId>rabbitmq-client</artifactId>
+                <version>1.0.5</version>
+            </dependency>
+
             <!-- Documentation -->
             <dependency>
                 <groupId>org.springdoc</groupId>
