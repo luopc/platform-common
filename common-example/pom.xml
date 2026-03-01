@@ -47,14 +47,6 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.luopc.platform.boot.middleware</groupId>
-            <artifactId>nacos-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.luopc.platform.boot.middleware</groupId>
-            <artifactId>rabbitmq-client</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.luopc.platform.boot</groupId>
             <artifactId>common-test</artifactId>
             <version>${project.version}</version>

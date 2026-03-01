@@ -71,7 +71,6 @@ if [ "$BUILD_TYPE" = "release" ]; then
   if ! mvn -B clean release:prepare-with-pom release:perform \
     -DuseReleaseProfile=false \
     -Dmaven.javadoc.skip=true \
-    -Pnative \
     -Puat; then
     echo -e "${RED}Error: Release build failed${NC}"
     exit 1
@@ -83,7 +82,7 @@ if [ "$BUILD_TYPE" = "release" ]; then
 elif [ "$BUILD_TYPE" = "snapshot" ]; then
   echo -e "${GREEN}Building Snapshot Version${NC}"
   # -Dmaven.javadoc.skip=true \
-  if ! mvn -B clean deploy -Pnative -Puat; then
+  if ! mvn -B clean deploy -Puat; then
     echo -e "${RED}Error: Snapshot build failed${NC}"
     exit 1
   fi

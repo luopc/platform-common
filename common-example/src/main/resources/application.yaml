@@ -16,7 +16,29 @@ spring:
     version: '@project.version@'
   profiles:
     active: '@profiles.active@'
-    include: web, nacos
+    include: web
 
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+server:
+  port: 8080
 
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+server:
+  port: 8082
+
+---
+spring:
+  config:
+    activate:
+      on-profile: uat
+server:
+  port: 8980
 

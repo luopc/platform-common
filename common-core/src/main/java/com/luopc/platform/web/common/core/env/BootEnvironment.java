@@ -30,7 +30,8 @@ public class BootEnvironment {
 
     public BootEnvironment(String projectName, BootEnvironmentEnum currentEnvironment) {
         this.isProd = BootEnvironmentEnum.PRD.equals(currentEnvironment);
-        this.isDev = BootEnvironmentEnum.DEV.equals(currentEnvironment);
+        this.isDev = BootEnvironmentEnum.DEV.equals(currentEnvironment)
+                || BootEnvironmentEnum.LOCAL.equals(currentEnvironment);
         this.isTest = (BootEnvironmentEnum.UAT.equals(currentEnvironment)
                 || BootEnvironmentEnum.SUP.equals(currentEnvironment)
                 || BootEnvironmentEnum.PRE.equals(currentEnvironment));

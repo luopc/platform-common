@@ -10,6 +10,10 @@ public enum BootEnvironmentEnum {
      * dev
      */
     DEV(SystemEnvironmentNameConst.DEV, "开发环境"),
+    /**
+     * dev
+     */
+    LOCAL(SystemEnvironmentNameConst.LOCAL, "本地环境"),
 
     /**
      * test
@@ -37,5 +41,7 @@ public enum BootEnvironmentEnum {
         public static final String SUP = "sup";
         public static final String PRE = "pre";
         public static final String PRD = "prd";
+
+        public static final String LOCAL = "local";
     }
 }
