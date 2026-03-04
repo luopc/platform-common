@@ -10,7 +10,7 @@ import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
  * <a href="https://mp.weixin.qq.com/s/KT6iw_8MNwL3URien_9BmA">Spring Boot 集成 BouncyCastle 实现加密算法</a>
  * <a href="https://mp.weixin.qq.com/s/_I-9BOstI6ZN9GvD4CzCEA">SpringBoot实现接口统一加密解密</a>
  */
-public class JasyptEncryptorDemo {
+public class JasyptEncryptorUtil {
     public static void main(String[] args) {
         String pwd = "12345";
         String secretKey = StringUtils.isBlank(System.getenv("JASYPT_ENCRYPTOR_PASSWORD")) ?
