@@ -2,22 +2,9 @@ server:
   port: 8988
 
 spring:
-  # 允许bean定义覆盖
-  #  main:
-  #    allow-bean-definition-overriding: true
   application:
     name: web-service
     version: '@project.version@'
   profiles:
     active: '@profiles.active@'
-    include: web
-
-jasypt:
-  encryptor:
-    password: your_secret_key
-    # PBEWithHMACSHA256AndAES_128
-    algorithm: PBEWithHMACSHA256AndAES_128
-    iv-generator-classname: org.jasypt.iv.RandomIvGenerator
-    # PBEWithMD5AndDES
-    #algorithm: PBEWithMD5AndDES
-    #iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    include: core, web

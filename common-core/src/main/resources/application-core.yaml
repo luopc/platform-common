@@ -1,0 +1,8 @@
+jasypt:
+  encryptor:
+    password: ${JASYPT_ENCRYPTOR_PASSWORD}
+    algorithm: PBEwithSHA1AndDESede
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    salt-generator-classname: org.jasypt.salt.RandomSaltGenerator
+  verify:
+    encrypted-text: ENC(TxTccQKIP16lw5z0gKgs+X4+n9RxbswSpTQUHQ131mI=)

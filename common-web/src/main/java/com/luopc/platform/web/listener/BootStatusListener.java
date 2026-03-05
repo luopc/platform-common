@@ -29,7 +29,6 @@ public class BootStatusListener implements InitializingBean, ApplicationRunner, 
     @Resource
     protected BootResilience bootResilience;
 
-
     @Override
     public void afterPropertiesSet() throws Exception {
         healthCheck();

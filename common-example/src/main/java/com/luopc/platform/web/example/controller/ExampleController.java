@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +39,7 @@ public class ExampleController {
         log.info("Received request to list users by name:{}", name);
         Map<String, Object> user = new HashMap<>();
         user.put("id", SimpleNumIDUtil.nextPkId());
-        user.put("name", StringUtils.isNoneBlank(name) ? name : "Zhang san");
+        user.put("name", StringUtils.isNoneBlank(name) ? name : "zhang san");
         return SimpleJsonUtil.writeJson(user);
     }
 

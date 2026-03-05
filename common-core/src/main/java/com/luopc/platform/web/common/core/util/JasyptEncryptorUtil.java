@@ -12,9 +12,9 @@ import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
  */
 public class JasyptEncryptorUtil {
     public static void main(String[] args) {
-        String pwd = "12345";
+        String pwd = "test_value_549527";
         String secretKey = StringUtils.isBlank(System.getenv("JASYPT_ENCRYPTOR_PASSWORD")) ?
-                "72$kL789sdf87&Po9876%987kjh876*9878765gfds7890" : System.getenv("JASYPT_ENCRYPTOR_PASSWORD");
+                "" : System.getenv("JASYPT_ENCRYPTOR_PASSWORD");
         String algorithm = "PBEwithSHA1AndDESede";
         System.out.println("secretKey=" + secretKey);
         StandardPBEStringEncryptor encryptor1 = new StandardPBEStringEncryptor();

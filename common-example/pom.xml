@@ -53,6 +53,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>com.luopc.platform.client</groupId>
+            <artifactId>nacos-client</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>

@@ -13,7 +13,7 @@ import java.net.http.HttpClient;
 import java.util.Map;
 import java.util.Properties;
 
-@Component
+//@Component
 @RequiredArgsConstructor
 public class ConfigRefresher {
 

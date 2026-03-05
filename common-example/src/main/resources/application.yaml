@@ -8,15 +8,12 @@ platform:
     isHotWarmModel: false
 
 spring:
-# 允许bean定义覆盖
-#  main:
-#    allow-bean-definition-overriding: true
   application:
     name: example-service
     version: '@project.version@'
   profiles:
     active: '@profiles.active@'
-    include: web
+    include: core,web,nacos
 
 ---
 spring:
@@ -25,6 +22,9 @@ spring:
       on-profile: dev
 server:
   port: 8080
+jasypt:
+  encryptor:
+    password: ${JASYPT_ENCRYPTOR_PASSWORD}
 
 ---
 spring:

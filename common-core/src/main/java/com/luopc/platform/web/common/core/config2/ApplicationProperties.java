@@ -10,8 +10,8 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
-@ConfigurationProperties(prefix = "app")
+//@Component
+//@ConfigurationProperties(prefix = "app")
 @Setter
 @Getter
 public class ApplicationProperties {
