@@ -1,24 +1,20 @@
-package com.luopc.platform.web.common.core.config;
+package com.luopc.platform.web.common.core.event;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ConfigRefreshObserverNotifier {
-
-    // 用于存放各个subject的注册表
-    // 在某些情况下，同一个subject可能会被重复注册，所以这里我会把subject的类名作为key放在map中
-    // 方便在注册时检查是否重复注册
+    /**
+     * save configuration subject, key is subject class name
+     */
     private static final Map<String, ConfigRefreshObserverSubject> subjects = new HashMap<>();
 
     private ConfigRefreshObserverNotifier() {
-        // notifier作为一个单例，我们不希望它被实例化
         throw new UnsupportedOperationException("ConfigRefreshObserverNotifier shouldn't be instantiated");
     }
 
     /**
-     * 注册subject
-     *
-     * @param subject 待注册的subject对象
+     * register subject
      */
     public static void register(final ConfigRefreshObserverSubject subject) {
         if (!isSubjectRegistered(subject)) {
@@ -27,7 +23,7 @@ public class ConfigRefreshObserverNotifier {
     }
 
     /**
-     * 向各个subject发出配置更新的通知
+     * notify all registered subjects
      */
     public static void notifyObservers() {
         for (final ConfigRefreshObserverSubject subject : subjects.values()) {

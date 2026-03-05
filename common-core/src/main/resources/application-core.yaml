@@ -1,8 +1,21 @@
+# 配置中心服务器地址
+config:
+  server:
+    url: http://localhost:8082
+  # 配置刷新间隔（秒）
+  refresh:
+    interval: 30
+
 jasypt:
   encryptor:
     password: ${JASYPT_ENCRYPTOR_PASSWORD}
     algorithm: PBEwithSHA1AndDESede
     iv-generator-classname: org.jasypt.iv.NoIvGenerator
     salt-generator-classname: org.jasypt.salt.RandomSaltGenerator
+    pool-size: 1
+    key-obtention-iterations: 1000
+    string-output-type: base64
+    provider-name: SunJCE
   verify:
     encrypted-text: ENC(TxTccQKIP16lw5z0gKgs+X4+n9RxbswSpTQUHQ131mI=)
+

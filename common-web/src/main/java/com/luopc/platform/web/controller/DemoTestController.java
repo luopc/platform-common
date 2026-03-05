@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-@RestController
+//@RestController
 @RequestMapping(value = "/api/demo", produces = MediaType.APPLICATION_JSON_VALUE)
 @Tag(name = "DemoTestController", description = "测试方法")
 public class DemoTestController {

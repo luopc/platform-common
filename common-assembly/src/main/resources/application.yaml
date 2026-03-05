@@ -17,7 +17,7 @@ spring:
     version: '@project.version@'
   profiles:
     active: '@profiles.active@'
-    include: web,nacos,amq
+    include: core,web,nacos
   # UTF-8编码
   cloud:
     nacos:

@@ -1,5 +1,7 @@
-package com.luopc.platform.web.common.core.config;
+package com.luopc.platform.web.common.core.event;
 
+import com.luopc.platform.web.common.core.service.ConfigurationRefreshService;
+import com.luopc.platform.web.common.core.service.DynamicConfigRefreshService;
 import lombok.Getter;
 
 import java.util.List;
@@ -7,8 +9,7 @@ import java.util.UUID;
 
 public abstract class ConfigRefreshObserverSubject {
     // 观察到配置更新后，从PropertyLoader获取新的值
-    @Getter
-    private final PropertyLoader propertyLoader;
+    private final ConfigurationRefreshService configurationRefreshService;
     // 这个观察者关心的key
     // 因为要计算在这个对象中当前生效的配置的签名，所以要配置这个对象关心哪些key
     // 然后取出这些key对应的value来计算签名
@@ -21,10 +22,9 @@ public abstract class ConfigRefreshObserverSubject {
     private String configSignature;
 
     public ConfigRefreshObserverSubject(
-            final PropertyLoader propertyLoader,
-            final List<String> monitoredKeys
-    ) {
-        this.propertyLoader = propertyLoader;
+            final ConfigurationRefreshService configurationRefreshService,
+            final List<String> monitoredKeys) {
+        this.configurationRefreshService = configurationRefreshService;
         this.monitoredKeys = monitoredKeys;
         // 在初始化时计算当前生效配置的签名
         this.configSignature = calculateConfigurationSignature();
@@ -43,18 +43,16 @@ public abstract class ConfigRefreshObserverSubject {
         configSignature = calculateConfigurationSignature();
     }
 
-    protected String calculateConfigurationSignature() {
+    public String calculateConfigurationSignature() {
         final StringBuilder newConfigurationSignatureSeedBuilder = new StringBuilder();
         for (String key : monitoredKeys) {
-            if (!propertyLoader.hasProperty(key)) {
+            if (!configurationRefreshService.hasProperty(key)) {
                 // 如果找不到某个关心的key，那么说明要么初始配置有问题，要么刷新的配置有问题
                 // 这时候尽早抛出异常引发开发人员关注
                 throw new IllegalArgumentException("Missing property: " + key + " for class: " + this.getClass().getSimpleName());
             }
-
-            newConfigurationSignatureSeedBuilder.append(propertyLoader.loadProperty(key));
+            newConfigurationSignatureSeedBuilder.append(configurationRefreshService.getValue(key));
         }
-
         return UUID.nameUUIDFromBytes(newConfigurationSignatureSeedBuilder.toString().getBytes()).toString();
     }
 }

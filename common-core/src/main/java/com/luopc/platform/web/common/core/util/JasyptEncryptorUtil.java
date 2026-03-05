@@ -12,7 +12,7 @@ import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
  */
 public class JasyptEncryptorUtil {
     public static void main(String[] args) {
-        String pwd = "test_value_549527";
+        String pwd = "123456";
         String secretKey = StringUtils.isBlank(System.getenv("JASYPT_ENCRYPTOR_PASSWORD")) ?
                 "" : System.getenv("JASYPT_ENCRYPTOR_PASSWORD");
         String algorithm = "PBEwithSHA1AndDESede";
@@ -42,7 +42,7 @@ public class JasyptEncryptorUtil {
         System.out.println("-".repeat(73));
     }
 
-    private static PooledPBEStringEncryptor getPooledPBEStringEncryptor(String secretKey, String algorithm) {
+    public static PooledPBEStringEncryptor getPooledPBEStringEncryptor(String secretKey, String algorithm) {
         PooledPBEStringEncryptor encryptor2 = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
         config.setPassword(secretKey);
