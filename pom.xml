@@ -54,12 +54,12 @@
             <dependency>
                 <groupId>com.luopc.platform.client</groupId>
                 <artifactId>nacos-client</artifactId>
-                <version>1.0.7-SNAPSHOT</version>
+                <version>1.0.8</version>
             </dependency>
             <dependency>
                 <groupId>com.luopc.platform.client</groupId>
                 <artifactId>rabbitmq-client</artifactId>
-                <version>1.0.7-SNAPSHOT</version>
+                <version>1.0.8</version>
             </dependency>
 
             <!-- Documentation -->
