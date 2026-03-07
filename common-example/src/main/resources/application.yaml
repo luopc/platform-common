@@ -1,7 +1,8 @@
 server:
   port: 8080
-  servlet:
-    context-path: /admin
+# 添加 servlet.context-path 以后，knife4j-gateway 不会生效
+#  servlet:
+#    context-path: /admin
 
 platform:
   resilience:
