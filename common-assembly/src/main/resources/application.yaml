@@ -43,3 +43,11 @@ spring:
       schema-locations: classpath:db/schema.sql
       data-locations: classpath:db/data.sql
       encoding: utf-8
+
+# MyBatis 配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.luopc.platform.web.example.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false

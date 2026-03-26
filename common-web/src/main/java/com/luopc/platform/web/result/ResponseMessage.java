@@ -1,6 +1,7 @@
 package com.luopc.platform.web.result;
 
 import com.luopc.platform.web.common.core.exception.ErrorCode;
+import com.luopc.platform.web.common.core.exception.PlatformErrorCode;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,6 +45,14 @@ public class ResponseMessage<T> {
     public static <T> ResponseMessage<T> success(String message) {
         return new Builder<T>()
                 .code("200")
+                .message(message)
+                .build();
+    }
+
+    public static <T> ResponseMessage<T> error(String message) {
+        String defaultCode = String.valueOf(PlatformErrorCode.INTERNAL_SERVER_ERROR.getCode());
+        return new Builder<T>()
+                .code(defaultCode)
                 .message(message)
                 .build();
     }

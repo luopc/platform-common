@@ -12,7 +12,7 @@ import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
  */
 public class JasyptEncryptorUtil {
     public static void main(String[] args) {
-        String pwd = "123456";
+        String pwd = "Luopc2021";
         String secretKey = StringUtils.isBlank(System.getenv("JASYPT_ENCRYPTOR_PASSWORD")) ?
                 "" : System.getenv("JASYPT_ENCRYPTOR_PASSWORD");
         String algorithm = "PBEwithSHA1AndDESede";
